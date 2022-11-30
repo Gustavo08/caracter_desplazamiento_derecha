@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Ejercicio</title>
+</head>
+<body>
+   <script>
+      /*
+         función que desplace la primera letra de cada palabra a la siguiente palabra de la cadena
+         (desplazamiento a la derecha). La última palabra cambia su primera letra a la primera
+         palabra de la cadena. Si la cadena recibida, solo es de una palabra, se mantiene igual.
+      */
+      
+      function shiftString(txt) {
+         let spl = txt.split(' '); // se separa en un array por cada espacio que haya en la cadena(se obtienen las palabras)
+         let first = spl.map(el => el[0]); /// se obtiene la primera letra de cada palabra
+         first.unshift(first.pop());
+         /*
+            con el método unshift agregamos un elemento al inicio del array, que seria
+            el ultimo elemento del array first
+         */
+         return spl.map((el, i) => first[i] + el.substring(1)).join(' ');
+         /*
+            Unimos los dos strings, cada una de las primeras letras de las palabras, en este punto
+            ya están desplazadas a la derecha con el resto de la palabra, que seria a partir del 
+            segundo caracter o posición 1, por eso hacemos uso de substring(1) y con el metodo join
+            une todos los elementos en una cadena, separados por espacio
+            (para tener nuevamente las palabras ).
+         */
+      }
+
+      let test1 = "crear una funcion"; // frear cna uuncion
+      let test2 = "palabra"; //palabra
+      let response = shiftString(test1);
+      console.log("==== response =====");
+      console.log(response);
+   </script>
+</body>
+</html>
